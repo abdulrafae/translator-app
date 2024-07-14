@@ -1,5 +1,5 @@
 import streamlit as st
-from transformer import AutoModelMT5ForConditionalGeneration, T5Tokenizer
+from transformer import MT5ForConditionalGeneration, T5Tokenizer
 #from transformers import pipeline
 
 st.title("Stevens Translator")

@@ -1,6 +1,6 @@
 import streamlit as st
-#from transformer import AutoModelMT5ForConditionalGeneration, T5Tokenizer
-from transformers import pipeline
+from transformer import AutoModelMT5ForConditionalGeneration, T5Tokenizer
+#from transformers import pipeline
 
 st.title("Stevens Translator")
 
@@ -11,7 +11,7 @@ Languages = {'arabic':'ar','bengali':'bn','chinese (simplified)':'zh-cn','chines
 mname = 'google/mt5-xl'
 model = MT5ForConditionalGeneration.from_pretrained(mname)
 tokenizer = T5Tokenizer.from_pretrained(mname)
-pipe = pipeline("translation_en_to_fr", model=mname)
+#pipe = pipeline("translation_en_to_fr", model=mname)
 
 text = st.text_area("Enter text:",height=None,max_chars=None,key=None,help="Enter your text here")
 

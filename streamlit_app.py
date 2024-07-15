@@ -28,7 +28,7 @@ text = st.text_area("Enter text:",height=None,max_chars=None,key=None,help="Ente
 option1 = st.selectbox('Input language', ('english',))
 
 option2 = st.selectbox('Output language',
-                       ('arabic','bengali','chinese (simplified)','chinese (traditional)','czech','danish','dutch','french','german','greek','gujarati','hindi','japanese','korean','urdu'))
+                       ('french','german'))
 
 temp = 1.0
 max_length = 128

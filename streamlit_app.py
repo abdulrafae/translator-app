@@ -48,13 +48,13 @@ if st.button('Translate Sentence'):
         line = line = task + ": " + text
         #line = line = task + " " + text
         input_ids = tokenizer(text, return_tensors="pt").input_ids
-        #output_ids = model.generate(input_ids=input_ids, do_sample=True,temperature=temp, max_length=max_length, top_k=topk, top_p=topp, repetition_penalty= rep_pen )
+        output_ids = model.generate(input_ids=input_ids, do_sample=True,temperature=temp, max_length=max_length, top_k=topk, top_p=topp, repetition_penalty= rep_pen )
         #outputs = model.generate(input_ids=input_ids)
         #text = "<2pt> I love pizza!"
 
-        out = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        #out = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-        #out = tokenizer.decode(output_ids[0])
+        out = tokenizer.decode(output_ids[0], skip_special_tokens=True)
 
         # Remove pad and eos tokens.
         out = out.strip().replace('<pad>','').replace('</s>','').replace("<extra_id_0>","").replace("<extra_id_1>","").strip(" ")

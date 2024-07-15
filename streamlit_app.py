@@ -13,7 +13,7 @@ Languages = {'english':'en', 'french':'fr', 'german':'de'}
 #mname = 'jbochi/madlad400-3b-mt'
 #mname = 'facebook/nllb-200-distilled-600M'
 #mname = 'google-t5/t5-3b'
-mname = '/home/yu/translator-app/pytorch-model.bin'
+mname = '/home/yu/translator-app/'
 model = MT5ForConditionalGeneration.from_pretrained(mname)
 
 mname = 'google/mt5-xl'

@@ -1,5 +1,5 @@
 import streamlit as st
-from transformers import MT5ForConditionalGeneration, T5Tokenizer
+from transformers import T5ForConditionalGeneration, T5Tokenizer
 #from transformers import pipeline
 
 st.title("Stevens Translator")
@@ -14,7 +14,7 @@ Languages = {'english':'en', 'french':'fr', 'german':'de'}
 #mname = 'facebook/nllb-200-distilled-600M'
 mname = 'google-t5/t5-3b'
 #mname = '/home/yu/translator-app/'
-model = MT5ForConditionalGeneration.from_pretrained(mname)
+model = T5ForConditionalGeneration.from_pretrained(mname)
 
 #mname = 'facebook/nllb-200-3.3B'
 tokenizer = T5Tokenizer.from_pretrained(mname)

@@ -12,11 +12,11 @@ Languages = {'english':'en', 'french':'fr', 'german':'de'}
 
 #mname = 'jbochi/madlad400-3b-mt'
 #mname = 'facebook/nllb-200-distilled-600M'
-#mname = 'google-t5/t5-3b'
-mname = '/home/yu/translator-app/'
+mname = 'google-t5/t5-3b'
+#mname = '/home/yu/translator-app/'
 model = MT5ForConditionalGeneration.from_pretrained(mname)
 
-mname = 'facebook/nllb-200-3.3B'
+#mname = 'facebook/nllb-200-3.3B'
 tokenizer = T5Tokenizer.from_pretrained(mname)
 #pipe = pipeline("translation_en_to_fr", model=mname)
 
@@ -43,11 +43,11 @@ rep_pen = 1.0
 
 #value1 = Languages[option1]
 #value2 = Languages[option2]
-value1 = 'en'
-value2 = 'hg'
-task = value1+"-"+value2
+#value1 = 'en'
+#value2 = 'hg'
+#task = value1+"-"+value2
 #task = "<"+value1+"2"+value2+">"
-#task = "translate "+option1.title()+" to "+option2.title()
+task = "translate "+option1.title()+" to "+option2.title()
 if st.button('Translate Sentence'):
     if text == "":
         st.warning('Please **enter text** for translation')

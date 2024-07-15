@@ -55,18 +55,18 @@ if st.button('Translate Sentence'):
         #with st.status("Downloading data...", expanded=True) as status:
         with st.spinner('Please wait...'):
             #while final_result == '':
-                st.write("Processing input...")
+                #st.write("Processing input...")
                 input_ids = tokenizer(text, return_tensors="pt").input_ids
                 #output_ids = model.generate(input_ids=input_ids, do_sample=True,temperature=temp, max_length=max_length, top_k=topk, top_p=topp, repetition_penalty= rep_pen )
                 output_ids = model.generate(input_ids=input_ids)
-                st.write("Generating translation...")
+                #st.write("Generating translation...")
         
                 out = tokenizer.decode(output_ids[0], skip_special_tokens=True)
         
                 # Remove pad and eos tokens.
                 out = out.strip().replace('<pad>','').replace('</s>','').replace("<extra_id_0>","").replace("<extra_id_1>","").strip(" ")
               
-                st.write("Making final fixes...")
+                #st.write("Making final fixes...")
           
                 # Fix zero-width joiner issue.
                 final_result = out.replace("\u0dca \u0dbb", "\u0dca\u200d\u0dbb").replace("\u0dca \u0dba", "\u0dca\u200d\u0dba")

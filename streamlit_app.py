@@ -59,12 +59,13 @@ if st.button('Translate Sentence'):
         out = tokenizer.decode(output_ids[0], skip_special_tokens=True)
 
         # Remove pad and eos tokens.
-        #out = out.strip().replace('<pad>','').replace('</s>','').replace("<extra_id_0>","").replace("<extra_id_1>","").strip(" ")
+        out = out.strip().replace('<pad>','').replace('</s>','').replace("<extra_id_0>","").replace("<extra_id_1>","").strip(" ")
 
         # Fix zero-width joiner issue.
-        #out = out.replace("\u0dca \u0dbb", "\u0dca\u200d\u0dbb").replace("\u0dca \u0dba", "\u0dca\u200d\u0dba")
+        out = out.replace("\u0dca \u0dbb", "\u0dca\u200d\u0dbb").replace("\u0dca \u0dba", "\u0dca\u200d\u0dba")
         
         #translate = translator.translate(text,lang_src=value1,lang_tgt=value2)
+        print(out)
         st.info(str(out))
 
         st.success("Translation is **successfully** completed!")

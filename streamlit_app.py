@@ -50,7 +50,7 @@ if st.button('Translate Sentence'):
         #line = line = task + " " + text
         input_ids = tokenizer(text, return_tensors="pt").input_ids
         #output_ids = model.generate(input_ids=input_ids, do_sample=True,temperature=temp, max_length=max_length, top_k=topk, top_p=topp, repetition_penalty= rep_pen )
-        outputs = model.generate(input_ids=input_ids)
+        output_ids = model.generate(input_ids=input_ids)
         #text = "<2pt> I love pizza!"
 
         #out = tokenizer.decode(outputs[0], skip_special_tokens=True)

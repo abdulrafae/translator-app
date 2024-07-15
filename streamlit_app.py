@@ -64,8 +64,8 @@ if st.button('Translate Sentence'):
                 # Fix zero-width joiner issue.
                 final_result = out.replace("\u0dca \u0dbb", "\u0dca\u200d\u0dbb").replace("\u0dca \u0dba", "\u0dca\u200d\u0dba")
         
-        print(out)
-        st.info(str(out))
+        print(final_result)
+        st.info(str(final_result))
 
         st.success("Translation is **successfully** completed!")
         #st.balloons()

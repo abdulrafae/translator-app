@@ -1,5 +1,5 @@
 import streamlit as st
-from transformers import T5ForConditionalGeneration, T5Tokenizer
+from transformers import MT5ForConditionalGeneration, T5Tokenizer
 #from transformers import pipeline
 
 st.title("Stevens Translator")
@@ -12,8 +12,11 @@ Languages = {'english':'en', 'french':'fr', 'german':'de'}
 
 #mname = 'jbochi/madlad400-3b-mt'
 #mname = 'facebook/nllb-200-distilled-600M'
-mname = 'google-t5/t5-3b'
-model = T5ForConditionalGeneration.from_pretrained(mname)
+#mname = 'google-t5/t5-3b'
+mname = '/home/yu/translator-app/pytorch-model.bin'
+model = MT5ForConditionalGeneration.from_pretrained(mname)
+
+mname = 'google/mt5-xl'
 tokenizer = T5Tokenizer.from_pretrained(mname)
 #pipe = pipeline("translation_en_to_fr", model=mname)
 
@@ -40,9 +43,11 @@ rep_pen = 1.0
 
 #value1 = Languages[option1]
 #value2 = Languages[option2]
-#task = value1+"-"+value2
+value1 = 'en'
+value2 = 'hg'
+task = value1+"-"+value2
 #task = "<"+value1+"2"+value2+">"
-task = "translate "+option1.title()+" to "+option2.title()
+#task = "translate "+option1.title()+" to "+option2.title()
 if st.button('Translate Sentence'):
     if text == "":
         st.warning('Please **enter text** for translation')

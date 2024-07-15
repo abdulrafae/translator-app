@@ -5,10 +5,10 @@ from transformers import T5ForConditionalGeneration, T5Tokenizer
 st.title("Stevens Translator")
 
 #Languages = {'afrikaans':'af','albanian':'sq','amharic':'am','arabic':'ar','armenian':'hy','azerbaijani':'az','basque':'eu','belarusian':'be','bengali':'bn','bosnian':'bs','bulgarian':'bg','catalan':'ca','cebuano':'ceb','chichewa':'ny','chinese (simplified)':'zh-cn','chinese (traditional)':'zh-tw','corsican':'co','croatian':'hr','czech':'cs','danish':'da','dutch':'nl','english':'en','esperanto':'eo','estonian':'et','filipino':'tl','finnish':'fi','french':'fr','frisian':'fy','galician':'gl','georgian':'ka','german':'de','greek':'el','gujarati':'gu','haitian creole':'ht','hausa':'ha','hawaiian':'haw','hebrew':'iw','hebrew':'he','hindi':'hi','hmong':'hmn','hungarian':'hu','icelandic':'is','igbo':'ig','indonesian':'id','irish':'ga','italian':'it','japanese':'ja','javanese':'jw','kannada':'kn','kazakh':'kk','khmer':'km','korean':'ko','kurdish (kurmanji)':'ku','kyrgyz':'ky','lao':'lo','latin':'la','latvian':'lv','lithuanian':'lt','luxembourgish':'lb','macedonian':'mk','malagasy':'mg','malay':'ms','malayalam':'ml','maltese':'mt','maori':'mi','marathi':'mr','mongolian':'mn','myanmar (burmese)':'my','nepali':'ne','norwegian':'no','odia':'or','pashto':'ps','persian':'fa','polish':'pl','portuguese':'pt','punjabi':'pa','romanian':'ro','russian':'ru','samoan':'sm','scots gaelic':'gd','serbian':'sr','sesotho':'st','shona':'sn','sindhi':'sd','sinhala':'si','slovak':'sk','slovenian':'sl','somali':'so','spanish':'es','sundanese':'su','swahili':'sw','swedish':'sv','tajik':'tg','tamil':'ta','telugu':'te','thai':'th','turkish':'tr','turkmen':'tk','ukrainian':'uk','urdu':'ur','uyghur':'ug','uzbek':'uz','vietnamese':'vi','welsh':'cy','xhosa':'xh','yiddish':'yi','yoruba':'yo','zulu':'zu'}
-Languages = {'arabic':'ar','bengali':'bn','chinese (simplified)':'zh-cn','chinese (traditional)':'zh-tw','czech':'cs','danish':'da','dutch':'nl','english':'en','french':'fr','german':'de','greek':'el','gujarati':'gu','hindi':'hi','japanese':'ja','korean':'ko','urdu':'ur'}
+#Languages = {'arabic':'ar','bengali':'bn','chinese (simplified)':'zh-cn','chinese (traditional)':'zh-tw','czech':'cs','danish':'da','dutch':'nl','english':'en','french':'fr','german':'de','greek':'el','gujarati':'gu','hindi':'hi','japanese':'ja','korean':'ko','urdu':'ur'}
+Languages = {'english':'en', 'french':'fr', 'german':'de'}
 
-
-mname = 'jbochi/madlad400-3b-mt'
+#mname = 'jbochi/madlad400-3b-mt'
 #mname = 'facebook/nllb-200-distilled-600M'
 mname = 'google-t5/t5-large'
 model = T5ForConditionalGeneration.from_pretrained(mname)
@@ -50,17 +50,21 @@ if st.button('Translate Sentence'):
         #line = line = task + " " + text
         print(line)
         final_result = ''
-        with st.spinner('Wait for it...'):
-            while final_result == '':
+        with st.status("Downloading data...", expanded=True) as status:
+            #while final_result == '':
+                st.write("Processing input...")
                 input_ids = tokenizer(text, return_tensors="pt").input_ids
                 #output_ids = model.generate(input_ids=input_ids, do_sample=True,temperature=temp, max_length=max_length, top_k=topk, top_p=topp, repetition_penalty= rep_pen )
                 output_ids = model.generate(input_ids=input_ids)
+                st.write("Generating translation...")
         
                 out = tokenizer.decode(output_ids[0], skip_special_tokens=True)
         
                 # Remove pad and eos tokens.
                 out = out.strip().replace('<pad>','').replace('</s>','').replace("<extra_id_0>","").replace("<extra_id_1>","").strip(" ")
-        
+              
+                st.write("Making final fixes...")
+          
                 # Fix zero-width joiner issue.
                 final_result = out.replace("\u0dca \u0dbb", "\u0dca\u200d\u0dbb").replace("\u0dca \u0dba", "\u0dca\u200d\u0dba")
         

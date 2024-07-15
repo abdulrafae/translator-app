@@ -10,7 +10,7 @@ Languages = {'afrikaans':'af','albanian':'sq','amharic':'am','arabic':'ar','arme
 
 mname = 'jbochi/madlad400-3b-mt'
 #mname = 'facebook/nllb-200-distilled-600M'
-#mname = 'google/mt5-large'
+mname = 'google/mt5-large'
 model = MT5ForConditionalGeneration.from_pretrained(mname)
 tokenizer = T5Tokenizer.from_pretrained(mname)
 #pipe = pipeline("translation_en_to_fr", model=mname)
@@ -38,14 +38,15 @@ rep_pen = 1.0
 value1 = Languages[option1]
 value2 = Languages[option2]
 #task = value1+"-"+value2
-task = "<"+value1+"2"+value2+">"
+#task = "<"+value1+"2"+value2+">"
+task = "translate "+option1+" to "+option2
 if st.button('Translate Sentence'):
     if text == "":
         st.warning('Please **enter text** for translation')
 
     else:
-        #line = line = task + ": " + text
-        line = line = task + " " + text
+        line = line = task + ": " + text
+        #line = line = task + " " + text
         input_ids = tokenizer(text, return_tensors="pt").input_ids
         #output_ids = model.generate(input_ids=input_ids, do_sample=True,temperature=temp, max_length=max_length, top_k=topk, top_p=topp, repetition_penalty= rep_pen )
         #outputs = model.generate(input_ids=input_ids)

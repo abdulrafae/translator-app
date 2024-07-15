@@ -50,7 +50,8 @@ if st.button('Translate Sentence'):
         #line = line = task + " " + text
         print(line)
         final_result = ''
-        with st.status("Downloading data...", expanded=True) as status:
+        #with st.status("Downloading data...", expanded=True) as status:
+        with st.spinner('Please wait...'):
             #while final_result == '':
                 st.write("Processing input...")
                 input_ids = tokenizer(text, return_tensors="pt").input_ids

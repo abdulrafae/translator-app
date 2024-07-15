@@ -8,7 +8,7 @@ Languages = {'afrikaans':'af','albanian':'sq','amharic':'am','arabic':'ar','arme
 #Languages = {'arabic':'ar','bengali':'bn','chinese (simplified)':'zh-cn','chinese (traditional)':'zh-tw','czech':'cs','danish':'da','dutch':'nl','english':'en','french':'fr','german':'de','greek':'el','gujarati':'gu','hindi':'hi','japanese':'ja','korean':'ko','urdu':'ur'}
 
 #mname = 'facebook/nllb-200-distilled-600M'
-mname = 'google/mt5-xl'
+mname = 'google/mt5-large'
 model = MT5ForConditionalGeneration.from_pretrained(mname)
 tokenizer = T5Tokenizer.from_pretrained(mname)
 #pipe = pipeline("translation_en_to_fr", model=mname)

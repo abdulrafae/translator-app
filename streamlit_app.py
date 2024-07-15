@@ -16,7 +16,7 @@ Languages = {'english':'en', 'french':'fr', 'german':'de'}
 mname = '/home/yu/translator-app/'
 model = MT5ForConditionalGeneration.from_pretrained(mname)
 
-mname = 'google/mt5-xl'
+mname = 'facebook/nllb-200-3.3B'
 tokenizer = T5Tokenizer.from_pretrained(mname)
 #pipe = pipeline("translation_en_to_fr", model=mname)
 

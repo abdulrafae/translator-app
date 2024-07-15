@@ -49,9 +49,9 @@ if st.button('Translate Sentence'):
         line = line = task + ": " + str(text)
         #line = line = task + " " + text
         print(line)
-        final_result = False
+        final_result = ''
         with st.spinner('Wait for it...'):
-            while not final_result:
+            while final_result == '':
                 input_ids = tokenizer(text, return_tensors="pt").input_ids
                 #output_ids = model.generate(input_ids=input_ids, do_sample=True,temperature=temp, max_length=max_length, top_k=topk, top_p=topp, repetition_penalty= rep_pen )
                 output_ids = model.generate(input_ids=input_ids)

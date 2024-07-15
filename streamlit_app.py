@@ -12,7 +12,7 @@ Languages = {'english':'en', 'french':'fr', 'german':'de'}
 
 #mname = 'jbochi/madlad400-3b-mt'
 #mname = 'facebook/nllb-200-distilled-600M'
-mname = 'google-t5/t5-large'
+mname = 'google-t5/t5-3b'
 model = T5ForConditionalGeneration.from_pretrained(mname)
 tokenizer = T5Tokenizer.from_pretrained(mname)
 #pipe = pipeline("translation_en_to_fr", model=mname)

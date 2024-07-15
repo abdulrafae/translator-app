@@ -11,7 +11,7 @@ Languages = {'afrikaans':'af','albanian':'sq','amharic':'am','arabic':'ar','arme
 mname = 'jbochi/madlad400-3b-mt'
 #mname = 'facebook/nllb-200-distilled-600M'
 #mname = 'google/mt5-large'
-model = MT5ForConditionalGeneration.from_pretrained(mname)
+model = T5ForConditionalGeneration.from_pretrained(mname)
 tokenizer = T5Tokenizer.from_pretrained(mname)
 #pipe = pipeline("translation_en_to_fr", model=mname)
 

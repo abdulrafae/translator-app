@@ -48,6 +48,7 @@ if st.button('Translate Sentence'):
     else:
         line = line = task + ": " + text
         #line = line = task + " " + text
+        print(line)
         input_ids = tokenizer(text, return_tensors="pt").input_ids
         #output_ids = model.generate(input_ids=input_ids, do_sample=True,temperature=temp, max_length=max_length, top_k=topk, top_p=topp, repetition_penalty= rep_pen )
         output_ids = model.generate(input_ids=input_ids)
